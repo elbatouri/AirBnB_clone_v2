@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This module defines the engine for the MySQL database"""
 
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
+from models.base_model import Base
 from models.user import User
 from models.state import State
 from models.city import City
@@ -34,18 +35,38 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
 
     def all(self, cls=None):
-        """Method to return a dictionary of objects"""
-        my_dict = {}
-        if cls:
-            result = DBStorage.__session.query(cls)
-        else:
-            for cl in self.__classes:
-                result = DBStorage.__session.query(cl)
-                for row in result:
-                    key = "{}.{}".format(row.__class__.__name__, row.id)
-                    my_dict[key] = row
-        return my_dict
+        '''
+        query for all objects on the current database session
+        '''
+        classes = {
+            "City": City,
+            "State": State,
+            "User": User,
+            "Place": Place,
+            "Review": Review,
+            "Amenity": Amenity,
+        }
+        result = {}
+        query_rows = []
 
+        if cls:
+            '''Query for all objects belonging to cls'''
+            if type(cls) is str:
+                cls = eval(cls)
+            query_rows = self.__session.query(cls)
+            for obj in query_rows:
+                key = '{}.{}'.format(type(obj).__name__, obj.id)
+                result[key] = obj
+            return result
+        else:
+            '''Query for all types of objects'''
+            for name, value in classes.items():
+                query_rows = self.__session.query(value)
+                for obj in query_rows:
+                    key = '{}.{}'.format(name, obj.id)
+                    result[key] = obj
+            return result
+    
     def new(self, obj):
         """Method to add a new object to the current database"""
         DBStorage.__session.add(obj)
