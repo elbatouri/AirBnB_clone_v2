@@ -57,9 +57,10 @@ class FileStorage:
 
     def delete(self, obj=None):
         ''' delete obj from __objects if it is inside '''
-        if obj:
-            key = '{}.{}'.format(type(obj).__name__, obj.id)
-            del FileStorage.__objects[key]
+        if = "{}.{}".format(type(obj).__name__, obj.id):
+            if (key, obj) in self.__objects.items():
+                self.__objects.pop(key, None)
+        self.save()
 
     def close(self):
         """ Deserialize JSON file to objects before leaving """
