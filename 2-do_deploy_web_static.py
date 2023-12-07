@@ -37,7 +37,7 @@ def do_deploy(archive_path):
         run("rm -rf {}/web_static".format(folder_path))
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(folder_path))
-        print('Done! Your new version is ready.')
+        print('New version deployed!')
         success = True
     except Exception as e:  # Fix typo "Exeption" to "Exception"
         print(f"Deployment failed: {e}")
