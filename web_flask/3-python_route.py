@@ -25,6 +25,7 @@ def c_is_fun(text):
     """display 'C '+ text passed with to remove '_' sign"""
     return 'C ' + text.replace('_', ' ')
 
+
 @app.route('/python/<text>', strict_slashes=False)
 def Python(text):
     """display 'Python '+ text passed with to remove '_' sign"""
