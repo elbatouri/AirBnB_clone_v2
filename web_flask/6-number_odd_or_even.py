@@ -47,13 +47,14 @@ def nubmer_html(n):
 
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def EvenOrOdd(n):
+def even_or_odd(n):
     """Return an html only if number is int"""
     if n % 2 == 0:
-        Result = 'even'
+        result = 'even'
     else:
-        Result = 'odd'
-    return render_template('6-number_odd_or_even.html', n=n, Result=Result)
+        result = 'odd'
+    return render_template('6-number_odd_or_even.html', n=n,
+                           result=result)
 
 
 if __name__ == '__main__':
