@@ -51,10 +51,10 @@ def EvenOrOdd(n):
     """Return an html only if number is int"""
     if n % 2 == 0:
         Result = 'even'
-    else :
+    else:
         Result = 'odd'
-    return render_template('6-number_odd_or_even.html', n=n,
-                            Result=Result)
+    return render_template('6-number_odd_or_even.html', n=n, Result=Result)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
