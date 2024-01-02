@@ -32,5 +32,6 @@ def Python(text='is_cool'):
     """display 'Python'+ text passed with to remove '_' sign"""
     return 'Python ' + text.replace('_', ' ')
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')

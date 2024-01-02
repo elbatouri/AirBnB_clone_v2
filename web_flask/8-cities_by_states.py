@@ -10,13 +10,13 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list():
+@app.route('/cities_by_states', strict_slashes=False)
+def cities_by_state():
     """Return list of states of states
     and related cities ordered by name
     display it on html page
     """
-    states = storage.all("State")
+    states = storage.all("State").values()
     return render_template("8-cities_by_states.html", states=states)
 
 
