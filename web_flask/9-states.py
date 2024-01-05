@@ -23,7 +23,7 @@ def states_list():
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     """Return states if id exist"""
-    for state in storage.all("states").values():
+    for state in storage.all("State").values():
         if state.id == id:
             return render_template("9-states.html", state=state)
         return render_template("9-states.html")

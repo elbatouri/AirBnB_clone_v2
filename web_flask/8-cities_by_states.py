@@ -16,7 +16,7 @@ def cities_by_state():
     and related cities ordered by name
     display it on html page
     """
-    states = storage.all("State").values()
+    states = storage.all("State")
     return render_template("8-cities_by_states.html", states=states)
 
 
